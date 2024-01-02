@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "@/Components/Button";
 import ThemeSwitcher from "@/Components/ThemeSwitcher";
 import { ThemeProvider } from "next-themes";
 

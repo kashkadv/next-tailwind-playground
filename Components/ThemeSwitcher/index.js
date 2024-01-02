@@ -1,14 +1,14 @@
 import { useTheme } from "next-themes";
+import Button from "../Button";
 
 export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
+  const label = `Toggle theme to ${theme == "light" ? "dark" : "light"}`;
 
   return (
-    <button
-      className="btn btn--bw"
-      onClick={() => (theme == "light" ? setTheme("dark") : setTheme("light"))}
-    >
-      Toggle theme to {theme == "light" ? "dark" : "light"}
-    </button>
+    <Button
+      action={() => (theme == "light" ? setTheme("dark") : setTheme("light"))}
+      label={label}
+    />
   );
 }
