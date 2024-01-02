@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '../styles/typography.scss';
+
+:root {
+  --primary: white;
+  --size: 200px;
+}
+
+@layer base {
+  body {
+    @apply dark:bg-stone-900 bg-white
+  }
+}

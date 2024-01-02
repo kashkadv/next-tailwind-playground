@@ -1,95 +1,68 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
 
-export default function Home() {
+import ThemeSwitcher from "@/Components/ThemeSwitcher";
+import { ThemeProvider } from "next-themes";
+
+export default function Page() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <ThemeProvider attribute="class">
+      <main className="p-5">
+        <ThemeSwitcher />
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        <h1 className="typography-h1 text-center text-blue-400">
+          Hello world!
+        </h1>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+        <button className="btn btn--danger">Button</button>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+        <div className="my-4 w-full rounded-md border-violet-600 bg-violet-200 p-2">
+          <p className="text-shtyl text-center font-mono font-extrabold">
+            A div
           </p>
-        </a>
-      </div>
-    </main>
-  )
+        </div>
+
+        <div className="fixed top-0 h-10 w-10 bg-red-500"></div>
+        <div className="flex justify-between">
+          <div className="h-16 w-16 rounded-full bg-blue-500"></div>
+          <div className="h-16 w-16 rounded-full bg-blue-500"></div>
+          <div className="h-16 w-16 rounded-full bg-blue-500"></div>
+        </div>
+
+        <div className="mt-4 grid grid-cols-1 justify-center gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="h-12 bg-red-300"></div>
+          <div className="h-12 bg-red-300"></div>
+          <div className="h-12 bg-red-300"></div>
+          <div className="h-12 bg-red-300"></div>
+          <div className="h-12 bg-red-300"></div>
+        </div>
+
+        <ul className="my-12 space-y-2">
+          <li className="p-3 odd:bg-red-300 even:bg-slate-200">Item</li>
+          <li className="p-3 odd:bg-red-300 even:bg-slate-200">Item</li>
+          <li className="p-3 odd:bg-red-300 even:bg-slate-200">Item</li>
+          <li className="p-3 odd:bg-red-300 even:bg-slate-200">Item</li>
+          <li className="p-3 odd:bg-red-300 even:bg-slate-200">Item</li>
+        </ul>
+
+        <div className="grid grid-cols-4 space-x-4">
+          <div className="rounded-lg bg-white px-6 py-8 shadow-xl shadow-neutral-200 dark:bg-black dark:shadow-none dark:shadow-neutral-700">
+            <h3 className="font-extrabold">This is a text el</h3>
+            <p>This is a p tag longer el</p>
+          </div>
+          <div className="rounded-lg bg-white px-6 py-8 shadow-xl shadow-neutral-200 dark:bg-black dark:shadow-none dark:shadow-neutral-700">
+            <h3 className="font-extrabold">This is a text el</h3>
+            <p>This is a p tag longer el</p>
+          </div>
+          <div className="rounded-lg bg-white px-6 py-8 shadow-xl shadow-neutral-200 dark:bg-black dark:shadow-none dark:shadow-neutral-700">
+            <h3 className="font-extrabold">This is a text el</h3>
+            <p>This is a p tag longer el</p>
+          </div>
+          <div className="rounded-lg bg-white px-6 py-8 shadow-xl shadow-neutral-200 dark:bg-black dark:shadow-none dark:shadow-neutral-700">
+            <h3 className="font-extrabold">This is a text el</h3>
+            <p>This is a p tag longer el</p>
+          </div>
+        </div>
+      </main>
+    </ThemeProvider>
+  );
 }
