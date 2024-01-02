@@ -1,7 +1,7 @@
 "use client";
 
-import Button from "@/Components/Button";
-import ThemeSwitcher from "@/Components/ThemeSwitcher";
+import Button from "@/components/Button";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { ThemeProvider } from "next-themes";
 
 export default function Page() {
@@ -16,7 +16,7 @@ export default function Page() {
 
         <button className="btn btn--danger">Button</button>
 
-        <div className="my-4 w-full rounded-md border-violet-600 bg-violet-200 p-2">
+        <div className="my-10 w-full rounded-md border-violet-600 bg-violet-200 p-2">
           <p className="text-shtyl text-center font-mono font-extrabold">
             A div
           </p>
