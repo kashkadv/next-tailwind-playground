@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import GushkaLogo from "../../public/icons/gushka-logo.svg";
 import CartIcon from "../../public/icons/cart-icon.svg";
+import Cart from "../Cart";
 
 export const Header = async function () {
   const res = await sanity.getMenus();
@@ -11,7 +12,7 @@ export const Header = async function () {
   const topNavItems = topNavMenu?.at(0)?.items;
 
   return (
-    <header className="flex h-16 w-full items-center justify-between px-8">
+    <header className="relative flex h-16 w-full items-center justify-between px-8">
       <div className="flex items-center space-x-20">
         <Link href="/">
           <GushkaLogo className="h-4 transition-all hover:text-green-900" />
@@ -31,9 +32,7 @@ export const Header = async function () {
           </ul>
         </nav>
       </div>
-      <button className="flex h-16 items-center">
-        <CartIcon className="h-8" />
-      </button>
+      <Cart />
     </header>
   );
 };

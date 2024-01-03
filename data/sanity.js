@@ -17,7 +17,6 @@ export const sanity = {
       cache: "force-cache",
       next: { revalidate: 60 },
     });
-    await wait(5);
     return result;
   },
 };
