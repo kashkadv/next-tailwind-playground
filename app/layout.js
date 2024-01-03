@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.scss";
+import { Suspense } from "react";
+import { Header, HeaderLoading } from "@/Components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +13,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <main className="grid min-h-svh w-full content-between bg-stone-50 dark:bg-neutral-900">
+          <Suspense fallback={<HeaderLoading />}>
+            <Header />
+            <section className="px-8">{children}</section>
+            <div className="bg-stone-300 p-8">1</div>
+          </Suspense>
+        </main>
+      </body>
     </html>
   );
 }
