@@ -16,29 +16,26 @@ export default function Cart() {
 }
 
 const CartToggle = () => {
-  const { setOpened } = useCartContext();
+  const { setStatus } = useCartContext();
 
   return (
-    <button onClick={() => setOpened(true)} className="flex h-16 items-center">
+    <button
+      onClick={() => setStatus("opened")}
+      className="flex h-16 items-center"
+    >
       <CartIcon className="h-8" />
     </button>
   );
 };
 
 const CartList = () => {
-  const { opened, setOpened } = useCartContext();
-  const [status, setStatus] = useState("closed");
-
-  useEffect(() => {
-    if (opened) setTimeout(() => setStatus("opened"), 100);
-  }, [opened]);
+  const { status, setStatus } = useCartContext();
 
   const closeCart = () => {
     setStatus("closing");
     setTimeout(() => {
-      setOpened(false);
       setStatus("closed");
-    }, 500);
+    }, 450);
   };
 
   const classes = {
@@ -47,7 +44,7 @@ const CartList = () => {
     closing: "animate-slideOutRight",
   };
 
-  if (!opened) return null;
+  if (status == "closed") return;
 
   return (
     <Backdrop clickEvent={() => closeCart()} status={status}>
@@ -57,8 +54,7 @@ const CartList = () => {
         <button onClick={() => closeCart()} className="flex h-16 items-center">
           <CloseIcon className="z-3 h-8" />
         </button>
-        <div className="min-h-svh bg-slate-100"> 123</div>
-        <div className="min-h-svh bg-slate-100"> 123</div>
+        <div className="min-h-svh"> 123</div>
       </div>
     </Backdrop>
   );

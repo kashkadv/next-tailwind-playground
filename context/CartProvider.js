@@ -8,21 +8,25 @@ const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [mounted, setMounted] = useState(false);
-  const [opened, setOpened] = useState(false);
+  const [status, setStatus] = useState("closed");
 
   useEffect(() => {
-    if (mounted) {
-      opened ? disableScroll() : enableScroll();
+    if (mounted && status == "opened") {
+      disableScroll();
+    }
+
+    if (mounted && status == "closed") {
+      enableScroll();
     }
 
     if (!mounted) {
       setMounted(true);
     }
-  }, [opened]);
+  }, [status]);
 
   const context = {
-    opened,
-    setOpened,
+    status,
+    setStatus,
   };
   return (
     <CartContext.Provider value={context}>{children}</CartContext.Provider>

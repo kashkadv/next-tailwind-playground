@@ -2,14 +2,13 @@ module.exports = {
   content: ["./app/**/*.{js, jsx}", "./components/**/*.{js, jsx}"],
   darkMode: "class",
   theme: {
-    fontSize: {
-      h1: ["14px", {}],
-      "h1-md": ["24px", {}],
-      "h1-xl": ["36px", {}],
-    },
     extend: {
+      fontFamily: {
+        secondary: "var(--secondary-font)",
+        subtitle: "var(--subtitle-font)",
+      },
       colors: {
-        shtyl: "rgba(0,0,0,.4)",
+        woodGreen: "#4b654a",
       },
       keyframes: {
         slideInLeft: {
@@ -28,12 +27,17 @@ module.exports = {
           "0%": { opacity: "100%" },
           "100%": { opacity: 0 },
         },
+        bounceUp: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "30%": { transform: "translateY(-4px)" },
+        },
       },
       animation: {
         fadeIn: "fadeIn 0.5s ease-in-out",
         fadeOut: "fadeOut 0.5s ease-in-out",
         slideInLeft: "slideInLeft 0.5s ease-in-out",
         slideOutRight: "slideOutRight 0.5s ease-in-out",
+        bounceUp: "bounceUp 0.5s ease-in-out",
       },
     },
   },

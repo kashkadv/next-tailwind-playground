@@ -12,7 +12,7 @@ export const Header = async function () {
   const topNavItems = topNavMenu?.at(0)?.items;
 
   return (
-    <header className="relative flex h-16 w-full items-center justify-between px-8">
+    <header className="fixed left-0 top-0 z-10 flex h-16 w-full items-center justify-between px-8">
       <div className="flex items-center space-x-20">
         <Link href="/">
           <GushkaLogo className="h-4 transition-all hover:text-green-900" />
@@ -20,9 +20,9 @@ export const Header = async function () {
         <nav>
           <ul className="flex space-x-8">
             {topNavItems.map((item, i) => (
-              <li key={`header-nav-${i}`}>
+              <li className="group" key={`header-nav-${i}`}>
                 <Link
-                  className="flex h-16 items-center font-medium"
+                  className="group-hover:animate-bounceUp group-hover:text-woodGreen flex h-16 items-center font-medium transition-all  "
                   href={item.url}
                 >
                   {item.name_en}

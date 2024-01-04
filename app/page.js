@@ -1,3 +1,10 @@
+import HomeHero from "@/components/HomeHero";
+
 export default function Page() {
-  return <div className="min-h-svh">1</div>;
+  return (
+    <>
+      <HomeHero />
+      <div className="min-h-dvh"></div>
+    </>
+  );
 }
