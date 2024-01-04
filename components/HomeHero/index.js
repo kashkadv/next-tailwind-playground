@@ -9,7 +9,7 @@ export default function HomeHero() {
         classes="col-span-1 flex flex-col items-end h-full justify-center bg-gray-50 space-y-4 px-8 "
       >
         <div className="font-secondary min-w-max text-6xl ">Dive into</div>
-        <div className="font-subtitle self-end">the world of GUSHKA</div>
+        <div className="font-subtitle self-end">The world of GUSHKA</div>
         <div className="font-subtitle text-right text-lg">
           Experience the Carpathian embrace with each product
         </div>
