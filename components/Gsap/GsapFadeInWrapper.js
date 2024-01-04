@@ -22,10 +22,10 @@ export const GsapFadeInWrapper = ({
       {
         opacity: 1,
         duration,
+        ease: "expoScale",
         scrollTrigger: {
           start: "top 80%",
           trigger: el,
-          // markers: true,
           toggleActions: `play none none ${reverse ? "reverse" : "none"}`,
         },
       },

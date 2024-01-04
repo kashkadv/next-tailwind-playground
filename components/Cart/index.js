@@ -23,7 +23,7 @@ const CartToggle = () => {
       onClick={() => setStatus("opened")}
       className="flex h-16 items-center"
     >
-      <CartIcon className="h-8" />
+      <CartIcon className="h-7 lg:h-6 xl:h-8" />
     </button>
   );
 };

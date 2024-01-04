@@ -4,11 +4,15 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        primary: "var(--primary-font)",
         secondary: "var(--secondary-font)",
         subtitle: "var(--subtitle-font)",
       },
       colors: {
         woodGreen: "#4b654a",
+      },
+      grayscale: {
+        30: "30%",
       },
       keyframes: {
         slideInLeft: {

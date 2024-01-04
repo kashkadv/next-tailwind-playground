@@ -4,7 +4,6 @@ export default function Page() {
   return (
     <>
       <HomeHero />
-      <div className="min-h-dvh"></div>
     </>
   );
 }

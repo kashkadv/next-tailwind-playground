@@ -9,7 +9,7 @@
 
 @layer base {
   body {
-    @apply dark:bg-stone-900 bg-white
+    @apply dark:bg-stone-900 bg-stone-100 text-gray-900
   }
 }
 

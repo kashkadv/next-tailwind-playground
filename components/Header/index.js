@@ -2,7 +2,6 @@ import { sanity } from "@/data/sanity";
 import Link from "next/link";
 
 import GushkaLogo from "../../public/icons/gushka-logo.svg";
-import CartIcon from "../../public/icons/cart-icon.svg";
 import Cart from "../Cart";
 
 export const Header = async function () {
@@ -12,17 +11,17 @@ export const Header = async function () {
   const topNavItems = topNavMenu?.at(0)?.items;
 
   return (
-    <header className="fixed left-0 top-0 z-10 flex h-16 w-full items-center justify-between px-8">
-      <div className="flex items-center space-x-20">
+    <header className="fixed left-0 top-0 z-10 flex h-16 w-full items-center justify-between bg-stone-100/50 px-8 backdrop-blur-[2px] 2xl:h-20">
+      <div className="flex items-center space-x-20 lg:space-x-12 2xl:space-x-20">
         <Link href="/">
-          <GushkaLogo className="h-4 transition-all hover:text-green-900" />
+          <GushkaLogo className="h-4 transition-all hover:text-green-900 lg:h-4 2xl:h-6" />
         </Link>
         <nav>
-          <ul className="flex space-x-8">
+          <ul className="hidden space-x-8 lg:flex">
             {topNavItems.map((item, i) => (
               <li className="group" key={`header-nav-${i}`}>
                 <Link
-                  className="group-hover:animate-bounceUp group-hover:text-woodGreen flex h-16 items-center font-medium transition-all  "
+                  className="flex h-16 items-center font-medium tracking-wider transition-all group-hover:animate-bounceUp group-hover:text-woodGreen lg:text-sm 2xl:text-xl 2xl:font-normal"
                   href={item.url}
                 >
                   {item.name_en}

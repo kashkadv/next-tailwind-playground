@@ -1,13 +1,18 @@
-import { Noto_Serif_Display, Victor_Mono } from "next/font/google";
+import { Noto_Serif_Display, Victor_Mono, Ubuntu } from "next/font/google";
 import "./globals.scss";
 import { Suspense } from "react";
 import { Header, HeaderLoading } from "@/components/Header";
 
-// const inter = Inter({ subsets: ["latin"] });
 const noto = Noto_Serif_Display({
   weight: ["200", "300", "400"],
   subsets: ["cyrillic-ext"],
   variable: "--secondary-font",
+});
+
+const ubuntu = Ubuntu({
+  weight: ["300", "400", "700"],
+  subsets: ["cyrillic-ext"],
+  variable: "--primary-font",
 });
 
 const victor = Victor_Mono({
@@ -24,15 +29,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${noto.variable} ${victor.variable}`}>
+    <html
+      lang="en"
+      className={`${noto.variable} ${victor.variable} ${ubuntu.variable}`}
+    >
       <body>
         <Suspense fallback={<HeaderLoading />}>
           <Header />
         </Suspense>
-        <main className="relative grid min-h-svh w-full content-between bg-stone-50 dark:bg-neutral-900">
+        <main className="relative grid min-h-svh w-full content-between">
           {children}
         </main>
-        <div className="bg-stone-300 p-8">Footer</div>
+        <div className="bg-stone-200/30 p-8">Footer</div>
       </body>
     </html>
   );
