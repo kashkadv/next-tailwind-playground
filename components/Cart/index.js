@@ -1,7 +1,7 @@
 "use client";
 
 import { CartProvider, useCartContext } from "@/context/CartProvider";
-import CartIcon from "../../public/icons/cart-icon.svg";
+import CartIcon from "../../public/icons/shopping-bag-icon.svg";
 import CloseIcon from "../../public/icons/close-icon.svg";
 import Backdrop from "../Backdrop";
 import { useEffect, useState } from "react";
@@ -21,9 +21,9 @@ const CartToggle = () => {
   return (
     <button
       onClick={() => setStatus("opened")}
-      className="flex h-16 items-center"
+      className="group flex h-full items-center"
     >
-      <CartIcon className="h-7 lg:h-6 xl:h-8" />
+      <CartIcon className="group-hover:text-woodGreen h-7 transition-all lg:h-6 xl:h-1/2" />
     </button>
   );
 };

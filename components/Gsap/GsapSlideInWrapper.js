@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useEffect, useRef } from "react";
 
-export const GsapFadeInWrapper = ({
+export const GsapSlideInWrapper = ({
   children,
   duration = 1,
   delay = 0,
@@ -19,14 +19,15 @@ export const GsapFadeInWrapper = ({
 
     gsap.fromTo(
       el,
-      { opacity: 0 },
+      { opacity: 0, x: "100%" },
       {
         opacity: 1,
+        x: 0,
         duration,
         delay,
-        ease: "expoScale",
+        ease: "back.out",
         scrollTrigger: {
-          start: "top 90%",
+          start: "center bottom",
           trigger: el,
           toggleActions: `play none none ${reverse ? "reverse" : "none"}`,
         },

@@ -19,4 +19,31 @@ export const sanity = {
     });
     return result;
   },
+
+  getSettings: async function () {
+    const query = `*[_type == "settings"] {
+      social[] {
+        "src": asset->url,    
+        link    
+      },
+      menus[] {
+        name_en,     
+        name_uk,     
+        _key, 
+        items[] {
+          name_en,     
+          name_uk,
+          url,
+          _key        
+        }
+      },
+      regions
+    }`;
+    const result = await this.client.fetch(query, {
+      filterResponse: true,
+      cache: "force-cache",
+      next: { revalidate: 1 },
+    });
+    return result;
+  },
 };

@@ -2,6 +2,7 @@ import { Noto_Serif_Display, Victor_Mono, Ubuntu } from "next/font/google";
 import "./globals.scss";
 import { Suspense } from "react";
 import { Header, HeaderLoading } from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const noto = Noto_Serif_Display({
   weight: ["200", "300", "400"],
@@ -40,7 +41,7 @@ export default function RootLayout({ children }) {
         <main className="relative grid min-h-svh w-full content-between">
           {children}
         </main>
-        <div className="bg-stone-200/30 p-8">Footer</div>
+        <Footer />
       </body>
     </html>
   );
