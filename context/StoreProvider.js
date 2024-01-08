@@ -10,6 +10,8 @@ export const StoreProvider = ({ children }) => {
   const [mounted, setMounted] = useState(false);
   const [status, setStatus] = useState("closed");
 
+  // Currency
+
   const [cartData, setCartData] = useState({
     totalSum: 0,
     totalCount: 0,
