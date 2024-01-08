@@ -34,13 +34,11 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${noto.variable} ${victor.variable} ${ubuntu.variable}`}
     >
-      <body>
+      <body className="flex h-fit min-h-screen flex-col">
         <Suspense fallback={<HeaderLoading />}>
           <Header />
         </Suspense>
-        <main className="relative grid min-h-svh w-full content-between">
-          {children}
-        </main>
+        <main className="relative grid w-full flex-grow ">{children}</main>
         <Footer />
       </body>
     </html>

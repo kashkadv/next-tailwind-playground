@@ -10,7 +10,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="mx-auto overflow-hidden px-8 pb-8 pt-16 sm:pt-24 lg:pt-32">
+    <footer className="w-full overflow-hidden px-8 pb-8 lg:pt-32">
       <Suspense fallback={<NavigationLoading />}>
         <Navigation />
       </Suspense>
@@ -24,7 +24,6 @@ export default function Footer() {
 }
 
 async function Navigation() {
-  await wait(3);
   const data = await sanity.getSettings();
 
   const social = data[0].social;
@@ -37,19 +36,18 @@ async function Navigation() {
   return (
     <GsapSlideInWrapper
       reverse
-      duration={1}
-      classes="grid grid-cols-5 *:tracking-wider"
+      classes="grid grid-cols-1 lg:grid-cols-5 *:tracking-wider"
     >
-      <div className="col-span-2 space-y-6">
+      <div className="order-2 col-span-2 space-y-6 pt-20 lg:order-1 lg:pt-0">
         <GushkaLogo className="h-4 transition-all lg:h-4 xl:h-3 2xl:h-6" />
-        <div className="max-w-80 italic text-gray-400">
+        <div className="italic text-gray-400 xl:w-80 2xl:w-2/3">
           A quiet voice of the heart that longs for a touch of nature.
         </div>
         <ul className="flex space-x-4">
           {social.map((item, i) => (
             <li className="h-10 w-10" key={`social-link-${i}`}>
               <Link
-                className="hover:text-woodGreen relative block h-10 w-10 text-red-500 transition-all"
+                className="relative block h-10 w-10 text-red-500 transition-all hover:text-woodGreen"
                 target="_blank"
                 href={item.link}
               >
@@ -59,7 +57,7 @@ async function Navigation() {
           ))}
         </ul>
       </div>
-      <div className="col-span-3 grid grid-cols-3 justify-between">
+      <div className="grid-col-1 order-1 col-span-3 grid justify-between sm:grid-cols-3 lg:order-2">
         {cols.map((col, i) => (
           <NavigationCol key={`footer-column-${i}`} col={col} />
         ))}
@@ -71,7 +69,7 @@ async function Navigation() {
 function NavigationCol({ col }) {
   return (
     <ul className="space-y-2">
-      <li className="mb-4 font-semibold">{col[0].name_en}</li>
+      <li className="mb-4 font-semibold max-sm:pt-10">{col[0].name_en}</li>
       {col[0].items.map((item) => (
         <li key={item._key}>
           <Link className="hover:text-woodGreen" href={item.url}>

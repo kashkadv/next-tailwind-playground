@@ -2,7 +2,8 @@
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export const GsapSlideInWrapper = ({
   children,
@@ -11,11 +12,17 @@ export const GsapSlideInWrapper = ({
   reverse = false,
   classes,
 }) => {
+  const pathname = usePathname();
   const ref = useRef();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const el = ref.current;
+
+    ScrollTrigger.refresh();
+    window?.addEventListener("resize", function () {
+      ScrollTrigger.refresh();
+    });
 
     gsap.fromTo(
       el,
@@ -27,13 +34,13 @@ export const GsapSlideInWrapper = ({
         delay,
         ease: "back.out",
         scrollTrigger: {
-          start: "center bottom",
+          start: "10% bottom",
           trigger: el,
           toggleActions: `play none none ${reverse ? "reverse" : "none"}`,
         },
       },
     );
-  }, []);
+  }, [pathname]);
 
   return (
     <div className={classes} ref={ref}>

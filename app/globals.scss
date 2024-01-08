@@ -22,4 +22,12 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  .section {
+    @apply px-8;
+
+    &--top {
+      @apply max-md:pt-20 pt-24;
+    }
+  }
 }

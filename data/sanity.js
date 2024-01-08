@@ -15,7 +15,6 @@ export const sanity = {
     const result = await this.client.fetch(query, {
       filterResponse: true,
       cache: "force-cache",
-      next: { revalidate: 60 },
     });
     return result;
   },
@@ -42,7 +41,6 @@ export const sanity = {
     const result = await this.client.fetch(query, {
       filterResponse: true,
       cache: "force-cache",
-      next: { revalidate: 1 },
     });
     return result;
   },
