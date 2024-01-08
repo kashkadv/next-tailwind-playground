@@ -5,18 +5,21 @@ import { Header, HeaderLoading } from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const noto = Noto_Serif_Display({
+  display: "swap",
   weight: ["200", "300", "400"],
   subsets: ["cyrillic-ext"],
   variable: "--secondary-font",
 });
 
 const ubuntu = Ubuntu({
+  display: "swap",
   weight: ["300", "400", "700"],
   subsets: ["cyrillic-ext"],
   variable: "--primary-font",
 });
 
 const victor = Victor_Mono({
+  display: "auto",
   weight: ["200", "300", "400"],
   subsets: ["cyrillic-ext"],
   variable: "--subtitle-font",

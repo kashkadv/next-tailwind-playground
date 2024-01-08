@@ -11,6 +11,10 @@
   body {
     @apply dark:bg-stone-900 bg-stone-100 text-gray-900 font-subtitle
   }
+
+  h1 {
+    @apply font-bold mb-12 text-9xl font-secondary tracking-widest
+  }
 }
 
 @layer utilities {

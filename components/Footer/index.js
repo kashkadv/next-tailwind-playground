@@ -27,11 +27,7 @@ async function Navigation() {
   const data = await sanity.getSettings();
 
   const social = data[0].social;
-
-  const col1 = data[0].menus.filter((menu) => menu.name_en == "For clients");
-  const col2 = data[0].menus.filter((menu) => menu.name_en == "Shop");
-  const col3 = data[0].menus.filter((menu) => menu.name_en == "Information");
-  const cols = [col1, col2, col3];
+  const cols = data[0].footer;
 
   return (
     <GsapSlideInWrapper
@@ -69,8 +65,8 @@ async function Navigation() {
 function NavigationCol({ col }) {
   return (
     <ul className="space-y-2">
-      <li className="mb-4 font-semibold max-sm:pt-10">{col[0].name_en}</li>
-      {col[0].items.map((item) => (
+      <li className="mb-4 font-semibold max-sm:pt-10">{col.name_en}</li>
+      {col.items.map((item) => (
         <li key={item._key}>
           <Link className="hover:text-woodGreen" href={item.url}>
             {item.name_en}
