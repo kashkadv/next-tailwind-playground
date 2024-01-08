@@ -1,35 +1,35 @@
 "use client";
 
-import { CartProvider, useCartContext } from "@/context/CartProvider";
 import CartIcon from "../../public/icons/shopping-bag-icon.svg";
 import CloseIcon from "../../public/icons/close-icon.svg";
 import Backdrop from "../Backdrop";
-import { useEffect, useState } from "react";
+import { useStoreContext } from "@/context/StoreProvider";
 
 export default function Cart() {
   return (
-    <CartProvider>
+    <>
       <CartToggle />
       <CartList />
-    </CartProvider>
+    </>
   );
 }
 
 const CartToggle = () => {
-  const { setStatus } = useCartContext();
+  const { cartData, setStatus } = useStoreContext();
 
   return (
     <button
       onClick={() => setStatus("opened")}
       className="group flex h-full items-center"
     >
-      <CartIcon className="group-hover:text-woodGreen h-7 transition-all lg:h-6 xl:h-1/2" />
+      {cartData.totalCount} - {cartData.totalSum}
+      <CartIcon className="h-7 transition-all group-hover:text-woodGreen lg:h-6 xl:h-1/2" />
     </button>
   );
 };
 
 const CartList = () => {
-  const { status, setStatus } = useCartContext();
+  const { status, setStatus } = useStoreContext();
 
   const closeCart = () => {
     setStatus("closing");

@@ -1,6 +1,5 @@
 import CategoryHero, { CategoryHeroLoading } from "@/components/CategoryHero";
-import { wait } from "@/data/helpers";
-import { sanity } from "@/data/sanity";
+import ProductsList from "@/components/ProductsList";
 import { Suspense } from "react";
 
 export default async function CategoryPage({ slug }) {
@@ -9,7 +8,9 @@ export default async function CategoryPage({ slug }) {
       <Suspense fallback={<CategoryHeroLoading />}>
         <CategoryHero slug={slug} />
       </Suspense>
-      <div>Products List</div>
+      <div className="section">
+        <ProductsList />
+      </div>
     </>
   );
 }

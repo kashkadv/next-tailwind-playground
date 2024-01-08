@@ -1,4 +1,3 @@
-import { wait } from "@/data/helpers";
 import { sanity } from "@/data/sanity";
 import React from "react";
 
