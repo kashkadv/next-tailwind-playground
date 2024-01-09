@@ -22,11 +22,12 @@ export function Product({ data, type = "full" }) {
           placeholder="blur"
         />
       </div>
-      <div className="mb-4">Sizes</div>
-      <div className="flex justify-between">
-        <ProductPrice data={data} />
-        <div>Button</div>
+      <div className="mb-4">
+        S <span className="text-gray-300">|</span> M{" "}
+        <span className="text-gray-300">|</span> L{" "}
+        <span className="text-gray-300">|</span> XL
       </div>
+      <ProductPrice data={data} />
     </Link>
   );
 }
