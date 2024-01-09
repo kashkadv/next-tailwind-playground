@@ -1,32 +1,28 @@
-"use client";
-
-import { useStoreContext } from "@/context/StoreProvider";
 import React from "react";
+import { Product, ProductLoading } from "../Product";
+import { sanity } from "@/data/sanity";
 
-export default function ProductsList() {
+export async function ProductsList({ slug }) {
+  const res = await sanity.getCategoryBySlug(slug);
+  const data = await sanity.getCategoryActiveProducts(res[0]._id);
+
+  console.log(data);
+
   return (
-    <div>
-      <div>
-        <div>Title</div>
-        <ProductControl />
-      </div>
+    <div className="grid grid-cols-4 gap-8">
+      {data.map((product) => (
+        <Product key={`list-product-${product._key}`} data={product} />
+      ))}
     </div>
   );
 }
 
-function ProductControl() {
-  const { cartControls } = useStoreContext();
-
+export function ProductsListLoading() {
   return (
-    <div
-      onClick={() =>
-        cartControls.addToCart(
-          Math.round(Math.random() * 10),
-          Math.round(Math.random() * 1000),
-        )
-      }
-    >
-      Add To Cart
+    <div className="grid grid-cols-4">
+      <ProductLoading />
+      <ProductLoading />
+      <ProductLoading />
     </div>
   );
 }

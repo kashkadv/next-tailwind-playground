@@ -107,4 +107,32 @@ export const sanity = {
     });
     return result;
   },
+  getCategoryActiveProducts: async function (category) {
+    const _key = getLanguageKey();
+
+    console.log(_key);
+    console.log(category);
+
+    const query = `*[_type == "product" && category._ref == $category && published == true] | order(articul desc){
+      "title": title[_key == $_key][0].value,
+      slug,
+      image,
+      base_price,
+      sizes,
+      stock,
+      category->{
+        "title": title[_key == $_key][0].value,
+        "slug": slug.current,        
+        "productTitle": product_title[_key == $_key][0].value        
+      }
+    }`;
+    const params = { category, _key };
+
+    const result = await this.client.fetch(query, params, {
+      filterResponse: true,
+      next: { revalidate: 1800 },
+    });
+
+    return result;
+  },
 };

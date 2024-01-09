@@ -6,11 +6,22 @@ import { useEffect } from "react";
 
 const StoreContext = createContext();
 
-export const StoreProvider = ({ children }) => {
+export const StoreProvider = ({ children, lang, settings }) => {
   const [mounted, setMounted] = useState(false);
   const [status, setStatus] = useState("closed");
 
-  // Currency
+  const defaultCurrency = lang == "uk" ? "Ukraine" : "Other world";
+  if (!localStorage.getItem("region"))
+    localStorage.setItem("region", defaultCurrency);
+
+  const [currentRegion, setCurrentRegion] = useState(
+    localStorage.getItem("region"),
+  );
+
+  const handleChangeRegion = function (regionTitle) {
+    localStorage.setItem("region", regionTitle);
+    setCurrentRegion(regionTitle);
+  };
 
   const [cartData, setCartData] = useState({
     totalSum: 0,
@@ -73,6 +84,9 @@ export const StoreProvider = ({ children }) => {
     setStatus,
     cartData,
     cartControls,
+    currentRegion,
+    settings,
+    handleChangeRegion,
   };
 
   return (
