@@ -21,7 +21,7 @@ export const buildFullPrices = (base, variants, currency) => {
     prices.push(base);
   }
 
-  if (currency.currency_code !== "UAH") {
+  if (currency?.currency_code !== "UAH") {
     prices.forEach((price, i) => (prices[i] = convert(price, currency)));
   }
 

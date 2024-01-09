@@ -110,9 +110,6 @@ export const sanity = {
   getCategoryActiveProducts: async function (category) {
     const _key = getLanguageKey();
 
-    console.log(_key);
-    console.log(category);
-
     const query = `*[_type == "product" && category._ref == $category && published == true] | order(articul desc){
       "title": title[_key == $_key][0].value,
       slug,

@@ -37,7 +37,7 @@ export default async function RootLayout({ children }) {
   const settings = await sanity.getSettings();
 
   return (
-    <StoreProvider lang={getLanguageKey()} settings={settings}>
+    <StoreProvider locale={getLanguageKey()} settings={settings}>
       <html
         lang="en"
         className={`${noto.variable} ${victor.variable} ${ubuntu.variable}`}

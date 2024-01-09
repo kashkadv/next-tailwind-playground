@@ -6,21 +6,46 @@ import { useEffect } from "react";
 
 const StoreContext = createContext();
 
-export const StoreProvider = ({ children, lang, settings }) => {
+export const StoreProvider = ({ children, locale, settings }) => {
   const [mounted, setMounted] = useState(false);
   const [status, setStatus] = useState("closed");
 
-  const defaultCurrency = lang == "uk" ? "Ukraine" : "Other world";
-  if (!localStorage.getItem("region"))
-    localStorage.setItem("region", defaultCurrency);
+  const defaultRegion = locale == "uk" ? "Ukraine" : "Other world";
 
-  const [currentRegion, setCurrentRegion] = useState(
-    localStorage.getItem("region"),
-  );
+  const [currentRegion, setCurrentRegion] = useState(false);
+  useEffect(() => {
+    const selectedRegion = localStorage?.getItem("region");
 
-  const handleChangeRegion = function (regionTitle) {
-    localStorage.setItem("region", regionTitle);
-    setCurrentRegion(regionTitle);
+    if (selectedRegion) {
+      setCurrentRegion(selectedRegion);
+    } else {
+      setCurrentRegion(defaultRegion);
+      localStorage.setItem("region", defaultRegion);
+    }
+  }, []);
+
+  const handleChangeRegion = (newRegion) => {
+    localStorage.setItem("region", newRegion);
+    setCurrentRegion(newRegion);
+  };
+
+  const defaultUnits = "metrical";
+  const [currentUnits, setCurrentUnits] = useState(false);
+
+  useEffect(() => {
+    const selectedUnits = localStorage?.getItem("units");
+
+    if (selectedUnits) {
+      setCurrentUnits(selectedUnits);
+    } else {
+      setCurrentUnits(defaultUnits);
+      localStorage.setItem("units", defaultUnits);
+    }
+  }, []);
+
+  const handleUnitsChange = (newUnits) => {
+    localStorage.setItem("units", newUnits);
+    setCurrentUnits(newUnits);
   };
 
   const [cartData, setCartData] = useState({
@@ -80,6 +105,7 @@ export const StoreProvider = ({ children, lang, settings }) => {
   };
 
   const context = {
+    locale,
     status,
     setStatus,
     cartData,
@@ -87,6 +113,7 @@ export const StoreProvider = ({ children, lang, settings }) => {
     currentRegion,
     settings,
     handleChangeRegion,
+    currentUnits,
   };
 
   return (

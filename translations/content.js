@@ -13,4 +13,18 @@ export const contentTranslations = {
       video: "",
     },
   },
+  units: {
+    en: {
+      length: {
+        metrical: "cm",
+        imperial: '"',
+      },
+    },
+    uk: {
+      length: {
+        metrical: "см",
+        imperial: '"',
+      },
+    },
+  },
 };
