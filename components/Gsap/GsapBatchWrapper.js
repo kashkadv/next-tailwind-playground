@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/all";
 import * as ga from "../../helpers/gsap-animations";
 
 import { useEffect, useRef, useState } from "react";
+import { useStoreContext } from "@/context/StoreProvider";
 
 export default function GsapBatchWrapper({
   children,
@@ -13,7 +14,7 @@ export default function GsapBatchWrapper({
   inViewportOnly = false,
 }) {
   const ref = useRef();
-
+  const { hideOutOfStock } = useStoreContext();
   const [mounted, setMounted] = useState(false);
 
   const animations = {
@@ -25,6 +26,10 @@ export default function GsapBatchWrapper({
     if (!mounted) setMounted(true);
     ScrollTrigger?.refresh();
   }, []);
+
+  // useEffect(() => {
+  //   ScrollTrigger.refresh();
+  // }, [hideOutOfStock]);
 
   useEffect(() => {
     if (!mounted) return;
@@ -61,7 +66,7 @@ export default function GsapBatchWrapper({
         },
       });
     }
-  }, [mounted]);
+  }, [mounted, hideOutOfStock]);
 
   return (
     <div className={classes} ref={ref}>

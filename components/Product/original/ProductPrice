@@ -8,7 +8,5 @@ export default function ProductPrice() {
   const { price } = useProductContext();
   const { currentRegion } = useStoreContext();
 
-  console.log(currentRegion);
-
   return <div>1</div>;
 }

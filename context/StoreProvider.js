@@ -9,6 +9,11 @@ const StoreContext = createContext();
 export const StoreProvider = ({ children, locale, settings }) => {
   const [mounted, setMounted] = useState(false);
   const [status, setStatus] = useState("closed");
+  const [hideOutOfStock, seThideOutOfStock] = useState(false);
+
+  const handleHideOutOfStock = () => {
+    seThideOutOfStock(!hideOutOfStock);
+  };
 
   const defaultRegion = locale == "uk" ? "Ukraine" : "Other world";
 
@@ -16,6 +21,10 @@ export const StoreProvider = ({ children, locale, settings }) => {
   useEffect(() => {
     const localStorageRegion = localStorage?.getItem("region");
     const region = localStorageRegion || defaultRegion;
+
+    const regionInfo = settings[0].regions.filter((el) => el.title == region);
+
+    localStorage.setItem("region-info", JSON.stringify(regionInfo));
 
     if (!localStorageRegion) localStorage.setItem("region", region);
     setCurrentRegion(region);
@@ -111,6 +120,8 @@ export const StoreProvider = ({ children, locale, settings }) => {
     settings,
     handleChangeRegion,
     currentUnits,
+    hideOutOfStock,
+    handleHideOutOfStock,
   };
 
   return (

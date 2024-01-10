@@ -1,23 +1,13 @@
 "use client";
 
-import { useStoreContext } from "@/context/StoreProvider";
-import { buildFullPrices } from "@/helpers/price";
+import { useProductContext } from "@/context/ProductProvider";
 
-export default function ProductPriceRange({ data }) {
-  const { currentRegion, settings } = useStoreContext();
+export const ProductPriceRange = () => {
+  const { priceRange } = useProductContext();
+  if (!priceRange) return <Loading />;
+  return <div className="font-primary text-xl leading-none">{priceRange}</div>;
+};
 
-  const regions = settings[0].regions;
-  const rate = regions.filter((region) => region.title == currentRegion);
-
-  if (!currentRegion) return <PriceLoading />;
-
-  return (
-    <div className="font-primary text-xl leading-none">
-      {buildFullPrices(data.base_price, data.sizes, rate[0])}
-    </div>
-  );
-}
-
-function PriceLoading() {
-  return <div className="h-6 w-20 animate-pulse bg-gray-200"></div>;
+function Loading() {
+  return <div className="h-6 w-1/3 animate-pulse bg-gray-200"></div>;
 }

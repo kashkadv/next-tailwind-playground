@@ -127,7 +127,7 @@ export const sanity = {
 
     const result = await this.client.fetch(query, params, {
       filterResponse: true,
-      next: { revalidate: 1800 },
+      next: { revalidate: 60 },
     });
 
     return result;

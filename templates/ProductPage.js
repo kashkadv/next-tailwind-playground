@@ -6,8 +6,6 @@ import { getLanguageKey } from "@/translations/headers";
 export default function ProductPage(props) {
   const { title, category, articul, base_price, sizes, _id } = props;
 
-  console.log(_id);
-
   return (
     <ProductProvider
       basePrice={base_price}
