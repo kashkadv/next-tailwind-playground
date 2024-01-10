@@ -34,7 +34,7 @@ export const GsapSlideInWrapper = ({
         delay,
         ease: "back.out",
         scrollTrigger: {
-          start: "10% bottom",
+          start: "center bottom",
           trigger: el,
           toggleActions: `play none none ${reverse ? "reverse" : "none"}`,
         },

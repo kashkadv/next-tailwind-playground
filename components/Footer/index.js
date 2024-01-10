@@ -1,7 +1,5 @@
-import { wait } from "@/data/helpers";
 import { sanity } from "@/data/sanity";
 import { Suspense } from "react";
-import { GsapSlideInWrapper } from "../Gsap/GsapSlideInWrapper";
 
 import GushkaLogo from "../../public/icons/gushka-logo.svg";
 
@@ -30,10 +28,7 @@ async function Navigation() {
   const cols = data[0].footer;
 
   return (
-    <GsapSlideInWrapper
-      reverse
-      classes="grid grid-cols-1 lg:grid-cols-5 *:tracking-wider"
-    >
+    <div className="grid grid-cols-1 *:tracking-wider lg:grid-cols-5">
       <div className="order-2 col-span-2 space-y-6 pt-20 lg:order-1 lg:pt-0">
         <GushkaLogo className="h-4 transition-all lg:h-4 xl:h-3 2xl:h-6" />
         <div className="italic text-gray-400 xl:w-80 2xl:w-2/3">
@@ -58,7 +53,7 @@ async function Navigation() {
           <NavigationCol key={`footer-column-${i}`} col={col} />
         ))}
       </div>
-    </GsapSlideInWrapper>
+    </div>
   );
 }
 

@@ -13,3 +13,19 @@ export const prettifySize = (size, units = "metrical", locale = "en") => {
     return size;
   }
 };
+
+export const getCheapestSize = (sizes) => {
+  let price = false;
+  let index = 0;
+
+  sizes.forEach((size, i) => {
+    if (price === false) price = size.additional_price;
+
+    if (price && price > size.additional_price) {
+      price = size.additional_price;
+      index = i;
+    }
+  });
+
+  return sizes[index];
+};

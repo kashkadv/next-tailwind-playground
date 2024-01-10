@@ -47,3 +47,13 @@ function convert(price, currency) {
   const converted = price * currency.rate * 2;
   return Math.ceil(converted) + 10 - (Math.ceil(converted) % 10);
 }
+
+export function finalPrettyPrice(price, currency) {
+  let result = price;
+
+  if (currency?.currency_code !== "UAH") {
+    result = convert(result, currency);
+  }
+
+  return prettify(result, currency);
+}

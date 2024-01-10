@@ -14,14 +14,11 @@ export const StoreProvider = ({ children, locale, settings }) => {
 
   const [currentRegion, setCurrentRegion] = useState(false);
   useEffect(() => {
-    const selectedRegion = localStorage?.getItem("region");
+    const localStorageRegion = localStorage?.getItem("region");
+    const region = localStorageRegion || defaultRegion;
 
-    if (selectedRegion) {
-      setCurrentRegion(selectedRegion);
-    } else {
-      setCurrentRegion(defaultRegion);
-      localStorage.setItem("region", defaultRegion);
-    }
+    if (!localStorageRegion) localStorage.setItem("region", region);
+    setCurrentRegion(region);
   }, []);
 
   const handleChangeRegion = (newRegion) => {

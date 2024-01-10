@@ -1,4 +1,5 @@
 import PageLoader from "@/components/PageLoader";
+import { wait } from "@/data/helpers";
 import { sanity } from "@/data/sanity";
 import CategoryPage from "@/templates/CategoryPage";
 import { Suspense } from "react";

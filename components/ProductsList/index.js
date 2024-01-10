@@ -7,13 +7,15 @@ export async function ProductsList({ slug }) {
   const res = await sanity.getCategoryBySlug(slug);
   const data = await sanity.getCategoryActiveProducts(res[0]._id);
 
+  const filteredProductsBySlug = data.filter((product) => product.slug);
+
   return (
     <GsapBatchWrapper
       type="fadeIn"
-      classes="grid grid-cols-4 gap-16 px-8 overflow-y-hidden"
+      classes="grid grid-cols-4 gap-16 px-8 overflow-y-hidden pb-8"
       inViewportOnly
     >
-      {data.map((product) => (
+      {filteredProductsBySlug.map((product) => (
         <Product key={`list-product-${product._key}`} data={product} />
       ))}
     </GsapBatchWrapper>
@@ -22,7 +24,8 @@ export async function ProductsList({ slug }) {
 
 export function ProductsListLoading() {
   return (
-    <div className="grid grid-cols-4">
+    <div className="grid grid-cols-4 gap-16 overflow-y-hidden px-8">
+      <ProductLoading />
       <ProductLoading />
       <ProductLoading />
       <ProductLoading />

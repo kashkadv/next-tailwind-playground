@@ -1,7 +1,5 @@
-import { wait } from "@/data/helpers";
 import { sanity } from "@/data/sanity";
 import React from "react";
-import GsapBatchWrapper from "../Gsap/GsapBatchWrapper";
 
 export default async function CategoryHero({ slug }) {
   const res = await sanity.getCategoryBySlug(slug);
@@ -9,15 +7,21 @@ export default async function CategoryHero({ slug }) {
 
   return (
     <div className="mt-12 grid p-16 xl:grid-cols-6">
-      <GsapBatchWrapper
+      {/* <GsapBatchWrapper
         type="slideInRight"
         classes="col-span-4 col-start-1 flex flex-col justify-center"
       >
         <h1 className="opacity-0">{data.title}</h1>
-        <p className="font-subtitle text-xl font-normal leading-relaxed tracking-wider opacity-0">
+        <p className="font-subtitle text-lg font-normal leading-relaxed tracking-wider opacity-0">
           {data.description}
         </p>
-      </GsapBatchWrapper>
+      </GsapBatchWrapper> */}
+      <div className="col-span-4 col-start-1 flex flex-col justify-center">
+        <h1>{data.title}</h1>
+        <p className="font-subtitle text-lg font-normal leading-relaxed tracking-wider">
+          {data.description}
+        </p>
+      </div>
     </div>
   );
 }

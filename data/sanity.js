@@ -67,7 +67,7 @@ export const sanity = {
 
     const result = await this.client.fetch(query, params, {
       filterResponse: true,
-      next: { revalidate: 1800 },
+      next: { revalidate: 1 },
     });
     return result;
   },
@@ -130,6 +130,30 @@ export const sanity = {
       next: { revalidate: 1800 },
     });
 
+    return result;
+  },
+  getProductBySlug: async function (slug) {
+    const _key = getLanguageKey();
+
+    const query = `*[_type == "product" && slug == $slug] {
+      "title": title[_key == $_key][0].value,
+      _id,
+      image,
+      gallery,
+      articul,
+      base_price,
+      sizes,
+      category->{
+        "title": title[_key == $_key][0].value,
+        "slug": slug.current,        
+        "productTitle": product_title[_key == $_key][0].value        
+      }
+    }`;
+    const params = { slug, _key };
+    const result = await this.client.fetch(query, params, {
+      filterResponse: true,
+      next: { revalidate: 1800 },
+    });
     return result;
   },
 };

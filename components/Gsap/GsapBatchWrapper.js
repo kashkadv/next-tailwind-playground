@@ -23,6 +23,7 @@ export default function GsapBatchWrapper({
 
   useEffect(() => {
     if (!mounted) setMounted(true);
+    ScrollTrigger?.refresh();
   }, []);
 
   useEffect(() => {
@@ -33,20 +34,20 @@ export default function GsapBatchWrapper({
 
     if (inViewportOnly) {
       ScrollTrigger.batch(els, {
+        batchMax: 4,
         onEnter: (batch) =>
           gsap.to(batch, {
             opacity: 1,
             y: 0,
-            stagger: { each: 0.15, ease: "elastic.inOut", grid: [1, 3] },
+            stagger: 0.15,
           }),
         onEnterBack: (batch) =>
           gsap.to(batch, {
             opacity: 1,
             y: 0,
-            stagger: { each: 0.15, ease: "elastic.inOut", grid: [1, 3] },
+            stagger: 0.15,
           }),
-        start: "top bottom+=50%",
-        end: "bottom center",
+        start: "10% bottom",
       });
 
       ScrollTrigger.addEventListener("refreshInit", () =>

@@ -27,4 +27,18 @@ export const contentTranslations = {
       },
     },
   },
+  product: {
+    en: {
+      availability: {
+        inStock: "Ready for delivery",
+        outOfStock: "Available in 4-6 weeks",
+      },
+    },
+    uk: {
+      availability: {
+        inStock: "Готовий до відправлення",
+        outOfStock: "Доступно за 4-6 тижнів",
+      },
+    },
+  },
 };
