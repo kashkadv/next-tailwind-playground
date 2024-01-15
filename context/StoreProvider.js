@@ -25,6 +25,7 @@ export const StoreProvider = ({ children, locale, settings }) => {
     const regionInfo = settings[0].regions.filter((el) => el.title == region);
 
     localStorage.setItem("region-info", JSON.stringify(regionInfo));
+    localStorage.setItem("locale", locale);
 
     if (!localStorageRegion) localStorage.setItem("region", region);
     setCurrentRegion(region);

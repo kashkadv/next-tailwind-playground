@@ -20,28 +20,43 @@ export const sanity = {
   },
 
   getSettings: async function () {
+    const _key = getLanguageKey();
+
     const query = `*[_type == "settings"] {
       social[] {
         "src": asset->url,    
         link    
       },
       menus[] {
-        name_en,     
-        name_uk,     
+        "name": name_${_key},    
         _key, 
         items[] {
-          name_en,     
-          name_uk,
+          "name": name_${_key},
           url,
           _key        
         }
       },
       regions,
-      footer
+      footer[] {
+        "name": name_${_key},
+        items[] {
+          "name": name_${_key},
+          _key,
+          url
+        }
+      },
+      "headerNav": menus[name_en == 'Shop'][0] {
+        items[] {
+          "name": name_${_key},
+          url,
+          _key
+        }    
+      }
     }`;
-    const result = await this.client.fetch(query, {
+    const params = { _key };
+
+    const result = await this.client.fetch(query, params, {
       filterResponse: true,
-      cache: "force-cache",
       next: { revalidate: 1 },
     });
     return result;

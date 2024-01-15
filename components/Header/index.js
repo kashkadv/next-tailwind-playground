@@ -5,10 +5,10 @@ import GushkaLogo from "../../public/icons/gushka-logo.svg";
 import Cart from "../Cart";
 
 export const Header = async function () {
-  const res = await sanity.getMenus();
+  const res = await sanity.getSettings();
 
-  const topNavMenu = res[0].menus.filter((menu) => menu.name_en == "Shop");
-  const topNavItems = topNavMenu?.at(0)?.items;
+  const topNavMenu = res[0].headerNav;
+  const topNavItems = topNavMenu?.items;
 
   return (
     <header className="fixed left-0 top-0 z-10 flex h-16 w-full items-center justify-between bg-stone-100/50 px-8 backdrop-blur-[2px] 2xl:h-20">
@@ -21,10 +21,10 @@ export const Header = async function () {
             {topNavItems.map((item, i) => (
               <li className="group" key={`header-nav-${i}`}>
                 <Link
-                  className="group-hover:animate-bounceUp group-hover:text-woodGreen flex h-16 items-center font-medium tracking-wider transition-all lg:text-sm 2xl:text-lg 2xl:font-normal"
+                  className="flex h-16 items-center font-medium tracking-wider transition-all group-hover:animate-bounceUp group-hover:text-woodGreen lg:text-sm 2xl:text-lg 2xl:font-normal"
                   href={item.url}
                 >
-                  {item.name_en}
+                  {item.name}
                 </Link>
               </li>
             ))}

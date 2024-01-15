@@ -8,9 +8,13 @@ export default function ProductInfoCatalog({ children }) {
   const { slug, stock, sizes } = useProductContext();
   const { hideOutOfStock } = useStoreContext();
 
-  if (hideOutOfStock) {
+  if (hideOutOfStock && sizes.length) {
     const inStock = sizes.filter((size) => size.stock > 0);
     if (inStock.length == 0) return;
+  }
+
+  if (hideOutOfStock && !sizes.length) {
+    if (!stock) return;
   }
 
   return (

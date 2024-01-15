@@ -16,7 +16,7 @@ export function getLanguageKey() {
   const host = getHost();
 
   let key = "en";
-  if (host == "localhost:3000") key = "uk";
+  if (host == "localhost:3000") key = "en";
 
   return key;
 }

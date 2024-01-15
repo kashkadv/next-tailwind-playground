@@ -60,11 +60,11 @@ async function Navigation() {
 function NavigationCol({ col }) {
   return (
     <ul className="space-y-2">
-      <li className="mb-4 font-semibold max-sm:pt-10">{col.name_en}</li>
+      <li className="mb-4 font-semibold max-sm:pt-10">{col.name}</li>
       {col.items.map((item) => (
         <li key={item._key}>
           <Link className="hover:text-woodGreen" href={item.url}>
-            {item.name_en}
+            {item.name}
           </Link>
         </li>
       ))}

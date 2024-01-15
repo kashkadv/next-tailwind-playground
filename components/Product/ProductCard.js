@@ -5,6 +5,10 @@ import { CardInfoBlock } from "./CardInfoBlock";
 import { ProductName } from "./ProductName";
 import { ProductPriceRange } from "./ProductPriceRange";
 import { ProductSizesList } from "./ProductSizesList";
+import ProductSingle from "./ProductSingle";
+import ProductSingleInfo from "./ProductSingleInfo";
+import ProductSingleGallery from "./ProductSingleGallery";
+import ProductSingleActions from "./ProductSingleActions";
 
 export default function ProductCard({ children, product }) {
   return (
@@ -20,3 +24,8 @@ ProductCard.CardInfoBlock = CardInfoBlock;
 ProductCard.Name = ProductName;
 ProductCard.PriceRange = ProductPriceRange;
 ProductCard.SizeList = ProductSizesList;
+ProductCard.Single = ProductSingle;
+
+ProductCard.SingleInfo = ProductSingleInfo;
+ProductCard.SingleGallery = ProductSingleGallery;
+ProductCard.SingleActions = ProductSingleActions;

@@ -1,6 +1,10 @@
 "use client";
 
-import { buildFullPrices } from "@/helpers/price";
+import {
+  buildFullPrices,
+  countSizePrice,
+  finalPrettyPrice,
+} from "@/helpers/price";
 import { getCheapestSize } from "@/helpers/size";
 
 import { createContext, useCallback, useContext, useState } from "react";
@@ -8,8 +12,18 @@ import { useEffect } from "react";
 
 const ProductContext = createContext();
 
-export const ProductProvider = ({ children, product, locale }) => {
-  const { sizes, base_price, slug, image, title, category, stock } = product;
+export const ProductProvider = ({ children, product }) => {
+  const {
+    sizes,
+    base_price,
+    slug,
+    image,
+    gallery,
+    title,
+    category,
+    stock,
+    articul,
+  } = product;
 
   let inititalSize = false;
   if (sizes.length) {
@@ -29,6 +43,22 @@ export const ProductProvider = ({ children, product, locale }) => {
     setPriceRange(buildFullPrices(base_price, sizes, regionInfo[0]));
   }, []);
 
+  const [finalPrice, setFinalPrice] = useState(false);
+  useEffect(() => {
+    const currency = JSON.parse(localStorage.getItem("region-info"));
+    setFinalPrice(finalPrettyPrice(price, currency.at(0)));
+  }, []);
+
+  const handleSizeChange = (index) => {
+    const newSize = sizes.at(index);
+    const newPrice = Number(base_price) + Number(newSize.additional_price);
+    const newFinalPrice = finalPrettyPrice(newPrice);
+
+    setSelectedSize(newSize);
+    setPrice(newPrice);
+    setFinalPrice(newFinalPrice);
+  };
+
   const name = title ?? category.productTitle;
 
   const context = {
@@ -40,6 +70,10 @@ export const ProductProvider = ({ children, product, locale }) => {
     priceRange,
     sizes,
     stock,
+    articul,
+    finalPrice,
+    gallery,
+    handleSizeChange,
   };
 
   return (

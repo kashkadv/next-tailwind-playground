@@ -48,8 +48,10 @@ function convert(price, currency) {
   return Math.ceil(converted) + 10 - (Math.ceil(converted) % 10);
 }
 
-export function finalPrettyPrice(price, currency) {
+export function finalPrettyPrice(price) {
   let result = price;
+
+  const currency = JSON.parse(localStorage.getItem("region-info")).at(0);
 
   if (currency?.currency_code !== "UAH") {
     result = convert(result, currency);

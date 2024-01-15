@@ -1,7 +1,10 @@
 import { contentTranslations } from "@/translations/content";
 
-export const prettifySize = (size, units = "metrical", locale = "en") => {
+export const prettifySize = (size) => {
   const length = size.includes("см");
+
+  const locale = localStorage.getItem("locale");
+  const units = localStorage.getItem("units");
 
   if (length) {
     let result = size.replace(
